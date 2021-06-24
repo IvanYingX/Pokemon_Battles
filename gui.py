@@ -1,4 +1,4 @@
-
+#%%
 import tkinter as tk
 from tkinter import *
 
@@ -41,3 +41,5 @@ run = tk.Button(frame,
                    command=quit)
 run.pack()
 root.mainloop()
+
+# %%
