@@ -14,14 +14,14 @@ class Pokemon:
     def fight(self, other):
         
         while True:
-            #print(f'{self.name} has the following moves')
+            print(f'{self.name} has the following moves')
         
 
             for i in self.move_names:
                 print(i)
             move = input()
             if move not in self.move_names:
-                #print(f'{self.name} doesn\'t know that move')
+                print(f'{self.name} doesn\'t know that move')
                 pass
             else:
                 break
