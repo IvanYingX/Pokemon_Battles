@@ -1,9 +1,10 @@
 class Pokemon:
-    def __init__(self, hp, name, attack, defense, moves=None):
+    def __init__(self, hp, name, attack, defense, elemental_type, moves=None):
         self.hp = hp
         self.name = name
         self.attack = attack
         self.defense = defense
+        self.elemental_type = elemental_type
         if moves is None:
             self.moves = []
             self.moves.append(Attack('Pound', 40, 30, 30, 'Normal'))
@@ -13,17 +14,23 @@ class Pokemon:
     def fight(self, other):
         
         while True:
-            print(f'{self.name} has the following moves')
+            #print(f'{self.name} has the following moves')
+        
+
             for i in self.move_names:
                 print(i)
-            move = input(f"What should {self.name} use? \n")
+            move = input()
             if move not in self.move_names:
-                print(f'{self.name} doesn\'t know that move')
+                #print(f'{self.name} doesn\'t know that move')
+                pass
             else:
                 break
         idx = self.move_names.index(move)
         move = self.moves[idx]
-        other.hp -= self.attack * move.power
+        if self.elemental_type == 'Fire' and other.elemental_type == 'Grass':
+            other.hp -= 2*((self.attack * move.power)/other.defense)
+        else:
+            other.hp -= (self.attack * move.power)/other.defense
         move.pp -= 1
 
 class Attack:
