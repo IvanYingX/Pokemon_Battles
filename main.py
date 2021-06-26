@@ -2,24 +2,23 @@ from Pokemon import Pokemon
 from Pokemon import Attack
 import time
 
-thunder = Attack('Thunder', 150, 5, 5, 'Electric')
-pound = Attack('Pound', 40, 30, 30, 'Normal')
-ember = Attack('Ember', 40, 20, 20, 'Fire')
-vine_whip = Attack('Vine Whip', 45, 25, 25, 'Grass')
-pikachu_moveset = [pound, thunder, ember]
+pound = Attack('Pound', 40, 30, 'Normal')
+ember = Attack('Ember', 40, 20, 'Fire')
+vine_whip = Attack('Vine Whip', 45, 25, 'Grass')
+charmander_moveset = [pound, ember]
 bulbasaur_moveset = [pound, vine_whip]
 
-pikachu = Pokemon(200, 'Pikachu', 30, 20, 'Electric', moves=pikachu_moveset)
+charmander = Pokemon(200, 'Charmander', 30, 20, 'Fire', moves=charmander_moveset)
 bulbasaur = Pokemon(200, 'Bulbasaur', 30, 20, 'Grass', moves=bulbasaur_moveset)
 
 while True:
-    flag = pikachu.fight(bulbasaur)
+    flag = charmander.fight(bulbasaur)
     if flag == False:
         break
     print(f'{bulbasaur.name} has {bulbasaur.hp} points left\n')
     time.sleep(2)
-    flag = bulbasaur.fight(pikachu)
+    flag = bulbasaur.fight(charmander)
     if flag == False:
         break
-    print(f'{pikachu.name} has {pikachu.hp} points left\n')
+    print(f'{charmander.name} has {charmander.hp} points left\n')
     
