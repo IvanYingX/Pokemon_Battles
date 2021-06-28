@@ -20,11 +20,12 @@ while True:
     if flag == False:
         break
     slow_print(f'{bulbasaur.name} has {bulbasaur.hp} points left\n')
-    time.sleep(1)
+    time.sleep(1.5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print(f'What will {bulbasaur.name} do?')
     flag = bulbasaur.fight(charmander)
     if flag == False:
         break
     slow_print(f'{charmander.name} has {charmander.hp} points left\n')
+    time.sleep(1.5)
     
