@@ -2,9 +2,6 @@ import tkinter as tk
 from tkinter import *
 
 
-
-
-
 def trainer_gui():
     root = tk.Tk()
     def write_attack():
@@ -65,28 +62,24 @@ def trainer_gui():
 def attack_gui(moveset: list):
     moveset += [''] * (4 - len(moveset))
     root = tk.Tk()
-    def write_attack():
+    def first_move():
         global val
         val = 0
-        print("You are using an attack!")
         root.destroy()
 
-    def write_object():
+    def second_move():
         global val
         val = 1
-        print("What item do you want to use?")
         root.destroy()
 
-    def write_change():
+    def third_move():
         global val
         val = 2
-        print("What pokemon do you want to send?")
         root.destroy()
 
-    def write_change():
+    def fourth_move():
         global val
         val = 3
-        print("What pokemon do you want to send?")
         root.destroy()
         
     frame = tk.Frame(root)
@@ -96,28 +89,26 @@ def attack_gui(moveset: list):
                     text=moveset[0],
                     width=25,
                     height=3,
-                    command=write_attack)
+                    command=first_move)
     attack.pack()
     change = tk.Button(frame,
                     text=moveset[1],
                     width=25,
                     height=3,
-                    command=write_change)
+                    command=second_move)
     change.pack()
     items = tk.Button(frame,
                     text=moveset[2],
                     width=25,
                     height=3,
-                    command=write_object)
+                    command=third_move)
     items.pack()
 
     run = tk.Button(frame,
                     text=moveset[3],
                     width=25,
                     height=3,
-                    command=quit)
+                    command=fourth_move)
     run.pack()
     root.mainloop()
     return val
-
-# %%

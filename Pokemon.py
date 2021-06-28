@@ -1,4 +1,14 @@
 from gui import attack_gui
+import time
+import random
+import sys
+
+def slow_print(message, typing_speed=200):
+    for char in message:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(random.random()*10.0/typing_speed)
+    print('')
 
 class Pokemon:
     def __init__(self, hp: int, name: str,
@@ -21,28 +31,23 @@ class Pokemon:
 
     def fight(self, other):
         idx = attack_gui(self.move_names)
-        # while True:
-        #     print(f'{self.name} has the following moves')
-        #     print('\t'.join(self.move_names))
-        #     move = input(f"\nWhat should {self.name} use?\t")
-        #     if move not in self.move_names:
-        #         print(f'{self.name} doesn\'t know that move')
-        #     else:
-        #         break
-        # idx = self.move_names.index(move)
-        # move = self.moves[idx]
         move = self.moves[idx]
-        
-        if move.elemental_type > other.elemental_type:
+        slow_print(f'{self.name} used {move}')
+        if move.elemental_type.element == 'Normal' or other.elemental_type.element == 'Normal':
+            other.hp -= (self.attack * move.power) / other.defense
+        elif move.elemental_type > other.elemental_type:
             other.hp -= 2 * (self.attack * move.power) / other.defense
-            print("It's super effective!")
+            slow_print("It's super effective!")
+        elif move.elemental_type < other.elemental_type or move.elemental_type == other.elemental_type:
+            other.hp -= 0.5 * (self.attack * move.power) / other.defense
+            slow_print("It's not very effective...")
         else:
             other.hp -= (self.attack * move.power) / other.defense
 
         move.pp -= 1
         if other.hp <= 0:
             other.hp = 0
-            print(f'{other.name} has fainted')
+            slow_print(f'{other.name} has fainted')
             return False
 
         return True
@@ -77,12 +82,12 @@ class ElementalType:
         return self.element == other.element
     
     def __lt__(self, other):
-        return (other.element > self.element)
+        return (other > self)
 
 if __name__ == '__main__':
 
     fire = ElementalType('Fire')
     grass = ElementalType('Grass')
     water = ElementalType('Water')
-    print(water >= grass)
+    slow_print(grass < fire)
         
