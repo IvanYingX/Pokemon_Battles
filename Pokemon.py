@@ -3,11 +3,11 @@ import time
 import random
 import sys
 
-def slow_print(message, typing_speed=200):
+def slow_print(message: str, typing_speed=200):
     for char in message:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(random.random()*10.0/typing_speed)
+        time.sleep(random.random() * 10.0/typing_speed)
     print('')
 
 class Pokemon:
@@ -84,10 +84,12 @@ class ElementalType:
     def __lt__(self, other):
         return (other > self)
 
+
 if __name__ == '__main__':
 
-    fire = ElementalType('Fire')
+    dark = ElementalType('Dark')
     grass = ElementalType('Grass')
     water = ElementalType('Water')
-    slow_print(grass < fire)
-        
+    print('Pokemon.py has been called')
+    print(len([1, 2, 3]))
+    print(len(grass))
