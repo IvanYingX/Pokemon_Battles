@@ -1,1 +1,1 @@
-__all__ = ['Pokemon', 'Trainer']
+__all__ = ['Pokemon', 'Trainer', 'gui']

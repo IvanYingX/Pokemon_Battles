@@ -1,4 +1,4 @@
-from Pokemon import Pokemon, Attack
+from .Pokemon import Pokemon, Attack
 
 class Trainer:
     def __init__(self, pokemon):

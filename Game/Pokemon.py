@@ -1,4 +1,4 @@
-from gui import attack_gui
+from .gui import attack_gui
 import time
 import random
 import sys
@@ -84,12 +84,17 @@ class ElementalType:
     def __lt__(self, other):
         return (other > self)
 
-
 if __name__ == '__main__':
 
-    dark = ElementalType('Dark')
+    # dark = ElementalType('Dark')
     grass = ElementalType('Grass')
     water = ElementalType('Water')
     print('Pokemon.py has been called')
-    print(len([1, 2, 3]))
-    print(len(grass))
+    # print(len([1, 2, 3]))
+    # print(len(grass))
+
+#     headless = False
+#     if len(sys.argv) > 1:
+#         if sys.argv[1] == "headless":
+#             print("Running in headless mode")
+#             headless = True
