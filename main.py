@@ -1,22 +1,27 @@
-from Pokemon import Pokemon
-from Pokemon import Attack
+from Game import *
 
-Pound = Attack('Pound', 40, 30, 30, 'normal')
-FireBlast = Attack('Fire Blast', 100, 10, 10, 'Fire')
-Thunder = Attack('Thunder', 120, 5, 5, 'fire')
-pikachu_moves=[Pound, FireBlast, Thunder]
+Pound = pokemon.Attack('Pound', 40, 30, 30, 'normal')
+FireBlast = pokemon.Attack('Fire Blast', 100, 10, 10, 'Fire')
+Thunder = pokemon.Attack('Thunder', 120, 5, 5, 'fire')
+Jump = pokemon.Attack('Jump', 0, 40, 40, 'normal')
 
-pikachu = Pokemon(200, 'Pikachu', 30, 20, 'Normal', pikachu_moves)
-bulbasaur = Pokemon(200, 'Bulbasaur', 30, 20, 'grass')
+pikachu = pokemon.Pokemon(200, 'Pikachu', 30, 20, 'Normal', [Pound, FireBlast, Thunder])
+bulbasaur = pokemon.Pokemon(200, 'Bulbasaur', 30, 20, 'Grass')
+magikarp = pokemon.Pokemon(150, 'Magikarp', 10, 10, 'Water', Jump)
 
-print(pikachu.__dir__())
-while True:
-    if pikachu.hp>0:
-        pikachu.fight(bulbasaur)
-    else:
-        print("Pikachu is incapacitated!")
-    if bulbasaur.hp>0:
-        bulbasaur.fight(pikachu)
-    else:
-        print("Bulbasaur is incapacitated!")
-        break
+satoshi = trainer.Trainer([pikachu, bulbasaur, magikarp])
+
+print(satoshi[0])
+
+
+# while True:
+#     if pikachu.hp>0:
+#         pikachu.fight(bulbasaur)
+#     else:
+#         print("Pikachu is incapacitated!")
+#     if bulbasaur.hp>0:
+#         bulbasaur.fight(pikachu)
+#     else:
+#         print("Bulbasaur is incapacitated!")
+#         break
+

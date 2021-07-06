@@ -5,13 +5,14 @@ class Pokemon:
         self.attack = attack
         self.defense = defense
         self.elemental_type = ElementalType(elemental_type)
+        self.moves = []
         if moves is None:
-            self.moves = []
             self.moves.append(Attack('Pound', 40, 30, 30, 'Normal'))
+        elif type(moves)=='list':
+            self.moves.extend(moves)
         else:
-            self.moves = moves
-        self.move_names = [x.name for x in self.moves]
-
+            self.moves.append(moves)
+        self.move_names = [x for x in self.moves]
 
     def fight(self, other):
         print(f'{self.name} has the following moves')
@@ -38,6 +39,9 @@ class Pokemon:
             move.pp -= 1
             print(f'{other.name} has {other.hp} hp left.')
                 
+    def __repr__(self):
+        return self.name
+
 
 
 class Attack:
@@ -48,6 +52,10 @@ class Attack:
         self.max_pp = max_pp
         self.elemental_type = ElementalType(elemental_type)
     def __repr__(self):
+        return self.name
+    def __iter__(self):
+        return self.name
+    def __len__(self):
         return self.name
 
 
@@ -81,9 +89,11 @@ class ElementalType:
     def __ne__(self, other):
         return (self.element != other)
 
+
+
 if __name__ == '__main__':
 
     fire = ElementalType('Fire')
     grass = ElementalType('Grass')
     water = ElementalType('Water')
-    print(grass <= fire)
+    #print(grass <= fire)
